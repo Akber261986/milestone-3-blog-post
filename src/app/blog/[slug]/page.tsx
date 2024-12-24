@@ -1,4 +1,5 @@
 'use client'
+import { Button } from '@/components/ui/button';
 import { posts, Post } from '../../../../data/posts';
 import { useState } from 'react';
 
@@ -8,24 +9,19 @@ interface BlogPostProps {
 
 export default function BlogPost({ params }: BlogPostProps) {
   const { slug } = params;
-
-  // Find the post that matches the slug from the URL
   const post = posts.find((p: Post) => p.slug === slug);
 
-  // Handle the case where no post is found
   if (!post) {
     return <div>Post not found!</div>;
   }
 
-  // State to manage the comments
   const [comments, setComments] = useState<string[]>([]);
   const [newComment, setNewComment] = useState<string>("");
 
-  // Function to handle adding a new comment
   const handleAddComment = () => {
     if (newComment.trim() !== "") {
       setComments([...comments, newComment]);
-      setNewComment(""); // Clear the input field after adding the comment
+      setNewComment(""); 
     }
   };
 
@@ -52,12 +48,12 @@ export default function BlogPost({ params }: BlogPostProps) {
           placeholder="Add a comment..."
           className="border rounded p-2 w-full mb-4"
         />
-        <button
+        <Button
           onClick={handleAddComment}
-          className="bg-blue-500 text-white px-4 py-2 rounded"
+          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700"
         >
           Add Comment
-        </button>
+        </Button>
       </div>
     </div>
   );

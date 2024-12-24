@@ -8,15 +8,16 @@ interface BlogPostProps {
 }
 
 export default function BlogPost({ params }: BlogPostProps) {
+  
+  const [comments, setComments] = useState<string[]>([]);
+  const [newComment, setNewComment] = useState<string>("");
+
   const { slug } = params;
   const post = posts.find((p: Post) => p.slug === slug);
 
   if (!post) {
     return <div>Post not found!</div>;
   }
-
-  const [comments, setComments] = useState<string[]>([]);
-  const [newComment, setNewComment] = useState<string>("");
 
   const handleAddComment = () => {
     if (newComment.trim() !== "") {

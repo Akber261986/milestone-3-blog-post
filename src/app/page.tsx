@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { posts } from "../../data/posts";
-import { Card, CardTitle, CardContent } from "@/components/ui/card";
+import { Card, CardTitle} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
